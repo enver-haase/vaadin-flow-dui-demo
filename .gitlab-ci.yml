@@ -1,0 +1,19 @@
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository --show-version"
+  MAVEN_CLI_OPTS: "-s .m2/settings.xml"
+
+cache:
+  paths:
+    - .m2/repository
+
+image: adoptopenjdk:11-jdk-hotspot
+
+stages:
+  - build
+
+
+build:
+  stage: build
+  script:
+    - './mvnw clean verify'

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>de.codecamp.vaadin</groupId>
+  <artifactId>vaadin-flow-dui-demo</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.3.0.RELEASE</version>
+    <relativePath />
+  </parent>
+
+  <name>vaadin-flow-dui-demo</name>
+  <description></description>
+
+  <properties>
+    <java.version>11</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <maven.install.skip>true</maven.install.skip>
+    <maven.deploy.skip>true</maven.deploy.skip>
+
+    <vaadin.version>14.4.1</vaadin.version>
+    <vaadin-flowdui.version>0.9.4</vaadin-flowdui.version>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>vaadin-addons</id>
+      <url>https://maven.vaadin.com/vaadin-addons</url>
+    </repository>
+  </repositories>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.vaadin</groupId>
+        <artifactId>vaadin-bom</artifactId>
+        <version>${vaadin.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>com.vaadin</groupId>
+      <artifactId>vaadin-spring-boot-starter</artifactId>
+      <exclusions>
+        <!-- Webjars are only needed when running in Vaadin 13 compatibility mode -->
+        <exclusion>
+          <groupId>com.vaadin.webjar</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.webjars.bowergithub.insites</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.webjars.bowergithub.polymer</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.webjars.bowergithub.polymerelements</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.webjars.bowergithub.vaadin</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.webjars.bowergithub.webcomponents</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-validation</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>de.codecamp.vaadin</groupId>
+      <artifactId>vaadin-flow-dui</artifactId>
+      <version>${vaadin-flowdui.version}</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+
+    <finalName>${project.artifactId}</finalName>
+
+    <plugins>
+      <plugin>
+        <groupId>com.vaadin</groupId>
+        <artifactId>vaadin-maven-plugin</artifactId>
+        <version>${vaadin.version}</version>
+        <configuration>
+          <pnpmEnable>true</pnpmEnable>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>prepare-frontend</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+
+  </build>
+
+  <profiles>
+
+    <profile>
+      <id>production</id>
+
+      <properties>
+        <vaadin.productionMode>true</vaadin.productionMode>
+      </properties>
+
+      <dependencies>
+        <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context-indexer</artifactId>
+          <optional>true</optional>
+        </dependency>
+        <dependency>
+          <groupId>com.vaadin</groupId>
+          <artifactId>flow-server-production-mode</artifactId>
+        </dependency>
+      </dependencies>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>build-frontend</goal>
+                </goals>
+                <phase>compile</phase>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-maven-plugin</artifactId>
+              <configuration>
+                <jvmArguments>-Dvaadin.productionMode</jvmArguments>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+      </build>
+    </profile>
+
+    <profile>
+      <id>deploy-heroku</id>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.heroku.sdk</groupId>
+            <artifactId>heroku-maven-plugin</artifactId>
+            <version>3.0.4</version>
+            <configuration>
+              <appName>codecamp-vaadin-flow-dui-demo</appName>
+              <jdkVersion>11</jdkVersion>
+              <processTypes>
+                <web>java $JAVA_OPTS -jar target/vaadin-security-spring-demo.jar --server.port=$PORT</web>
+              </processTypes>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+  </profiles>
+</project>

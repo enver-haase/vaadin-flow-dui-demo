@@ -1,0 +1,213 @@
+
+<vaadin-app-layout>
+  <vaadin-drawer-toggle slot="navbar touch-optimized"></vaadin-drawer-toggle>
+  <vaadin-tabs slot="drawer" orientation="vertical" theme="minimal" style="margin: 0 auto; flex: 1;">
+    <vaadin-tab>
+      <iron-icon icon="vaadin:home"></iron-icon>
+      Page 1
+    </vaadin-tab>
+    <vaadin-tab>
+      <iron-icon icon="vaadin:list"></iron-icon>
+      Page 2
+    </vaadin-tab>
+    <vaadin-tab>
+      <iron-icon icon="vaadin:options"></iron-icon>
+      Page 3
+    </vaadin-tab>
+    <vaadin-tab>
+      <iron-icon icon="vaadin:question"></iron-icon>
+      Page 4
+    </vaadin-tab>
+  </vaadin-tabs>
+
+  <vaadin-vertical-layout padding>
+
+    <span theme="badge">Test</span>
+
+    <hr/>
+    <vaadin-checkbox checked>I agree with <a href>Terms &amp; Conditions</a></vaadin-checkbox>
+    <vaadin-checkbox checked>
+      <iron-icon icon="lumo:bell" style="vertical-align: top;"></iron-icon>
+      Notifications
+      <br>
+      <small>Enable desktop notifications</small>
+    </vaadin-checkbox>
+
+    <vaadin-checkbox disabled checked>
+      Option two<br>
+      <small>Description for this option</small>
+    </vaadin-checkbox>
+    
+    <vaadin-checkbox disabled>Option two</vaadin-checkbox>
+    
+    <vaadin-checkbox disabled indeterminate>Indeterminate</vaadin-checkbox>
+
+    <vaadin-checkbox-group label="CheckboxGroup"></vaadin-checkbox-group>
+
+    <hr/>
+
+    <vaadin-combo-box label="Label"></vaadin-combo-box>
+    <vaadin-combo-box placeholder="Placeholder"></vaadin-combo-box>
+    <vaadin-combo-box label="Disabled" disabled></vaadin-combo-box>
+    <vaadin-combo-box label="Read-only" readonly></vaadin-combo-box>
+    <vaadin-combo-box label="Clear Button Visible" clear-button-visible></vaadin-combo-box>
+    <vaadin-combo-box label="Allow Custom Value" allow-custom-value></vaadin-combo-box>
+
+    <hr/>
+
+    <vaadin-custom-field label="Date range">
+      <vaadin-date-picker id="start"></vaadin-date-picker>
+      <vaadin-date-picker id="end"></vaadin-date-picker>
+    </vaadin-custom-field>
+
+    <hr/>
+
+    <vaadin-date-picker label="Date" placeholder="Pick a date"></vaadin-date-picker>
+    <vaadin-date-picker disabled label="Disabled input" value="1980-08-14"></vaadin-date-picker>
+    <vaadin-date-picker readonly label="Readonly input" value="1980-08-14"></vaadin-date-picker>
+
+    <hr/>
+
+    <vaadin-time-picker label="Arrival hour (hh:mm)"></vaadin-time-picker>
+    <vaadin-time-picker min="09:00" max="17:00" label="Lunch hour (hh:mm:ss.fff)"></vaadin-time-picker>
+    <vaadin-time-picker label="Time" value="10:10" clear-button-visible></vaadin-time-picker>
+
+    <hr/>
+
+    <vaadin-upload></vaadin-upload>
+    <vaadin-upload nodrop></vaadin-upload>
+    <vaadin-upload accept="image/*"></vaadin-upload>
+    <vaadin-upload accept="application/pdf">
+      <iron-icon slot="drop-label-icon" icon="vaadin:file-text-o"></iron-icon>
+      <span slot="drop-label">Drop your favourite Novels here</span>
+    </vaadin-upload>
+
+    <hr/>
+
+    <vaadin-email-field label="Email" error-message="Please enter a valid email address" clear-button-visible></vaadin-email-field>
+
+    <vaadin-number-field label="Years of expertise"></vaadin-number-field>
+    <vaadin-number-field has-controls></vaadin-number-field>
+    <vaadin-number-field value="1" min="1" max="10" has-controls></vaadin-number-field>
+    <vaadin-integer-field min="0" max="10" has-controls></vaadin-integer-field>
+
+    <vaadin-password-field label="Password" placeholder="Enter password" value="secret1"></vaadin-password-field>
+    <vaadin-password-field label="Password" value="secret1" reveal-button-hidden></vaadin-password-field>
+
+    <vaadin-text-area label="Description" placeholder="Write here ..."></vaadin-text-area>
+
+    <vaadin-text-field label="Label" helper-text="Helper text Helper text Helper text Helper text Helper text"></vaadin-text-field>
+    <vaadin-text-field placeholder="Placeholder">
+      <div slot="helper">
+        <iron-icon icon="vaadin:warning"/>
+        Helper components Helper components Helper components Helper components Helper components
+      </div>
+    </vaadin-text-field>
+    <vaadin-text-field value="Value"></vaadin-text-field>
+    <vaadin-text-field label="Disabled" value="Value" disabled></vaadin-text-field>
+    <vaadin-text-field label="Read-only" value="Value" readonly></vaadin-text-field>
+    <vaadin-text-field clear-button-visible value="Value"></vaadin-text-field>
+
+    <hr/>
+
+    <vaadin-accordion closed>
+      <vaadin-accordion-panel>
+        <div slot="summary">Personal Information</div>
+        <vaadin-vertical-layout>
+          <vaadin-text-field label="Name" theme="small"></vaadin-text-field>
+          <vaadin-text-field label="Phone" theme="small"></vaadin-text-field>
+          <vaadin-text-field label="Email" theme="small"></vaadin-text-field>
+        </vaadin-vertical-layout>
+      </vaadin-accordion-panel>
+      <vaadin-accordion-panel>
+        <div slot="summary">Billing Address</div>
+        <vaadin-vertical-layout>
+          <vaadin-text-field label="Address" theme="small"></vaadin-text-field>
+          <vaadin-text-field label="City" theme="small"></vaadin-text-field>
+          <vaadin-text-field label="State" theme="small"></vaadin-text-field>
+          <vaadin-text-field label="Zip Code" theme="small"></vaadin-text-field>
+        </vaadin-vertical-layout>
+      </vaadin-accordion-panel>
+      <vaadin-accordion-panel disabled>
+        <div slot="summary">Payment</div>
+        <span>Not yet implemented</span>
+      </vaadin-accordion-panel>
+    </vaadin-accordion>
+
+    <hr/>
+
+    <vaadin-button><iron-icon slot="prefix" icon="vaadin:warning"/>Text</vaadin-button>
+    <vaadin-button><iron-icon slot="suffix" icon="vaadin:warning"/>Text</vaadin-button>
+
+    <hr/>
+
+    <vaadin-details>
+      <div slot="summary">Expandable Details</div>
+      Toggle using mouse, Enter and Space keys.
+    </vaadin-details>
+    
+    <vaadin-details disabled opened>
+      <div slot="summary">Disabled heading</div>
+      Always visible content.
+    </vaadin-details>
+    
+    <vaadin-details theme="filled">
+      <div slot="summary">Filled</div>
+      Panel content
+    </vaadin-details>
+
+    <hr/>
+
+    <vaadin-button id="dialogOpenButton">Open Dialog</vaadin-button>
+    <vaadin-dialog id="dialog" aria-label="polymer templates">
+      <div>This simple dialog will close by pressing the Esc key,</div>
+      <div> or by a mouse click anywhere outside the dialog area</div>
+    </vaadin-dialog>
+
+    <hr/>
+
+    <vaadin-progress-bar value="0.3"></vaadin-progress-bar>
+    <vaadin-progress-bar indeterminate></vaadin-progress-bar>
+    <vaadin-progress-bar theme="success" value="0.45"></vaadin-progress-bar>
+
+    <hr/>
+
+    <vaadin-tabs>
+      <vaadin-tab>Tab one</vaadin-tab>
+      <vaadin-tab>Tab two</vaadin-tab>
+      <vaadin-tab>Tab three</vaadin-tab>
+    </vaadin-tabs>
+
+    <vaadin-tabs orientation="vertical">
+      <vaadin-tab>Tab one</vaadin-tab>
+      <vaadin-tab>Tab two</vaadin-tab>
+      <vaadin-tab>Tab three</vaadin-tab>
+    </vaadin-tabs>
+
+    <hr/>
+
+    <vaadin-combo-box></vaadin-combo-box>
+    <vaadin-list-box></vaadin-list-box>
+    <vaadin-grid></vaadin-grid>
+
+    <hr/>
+
+    <fieldset>
+      <vaadin-button>Button</vaadin-button>
+      <vaadin-button>Button</vaadin-button>
+    </fieldset>
+
+    <hr/>
+
+    <slot name="formLayoutSlot"></slot>
+
+<!--     <custom-style> -->
+<!--       <style> -->
+<!--         input, vaadin-button { -->
+<!--         background-color: red; -->
+<!--       } -->
+<!--       </style> -->
+<!--     </custom-style> -->
+
+  </vaadin-vertical-layout>
+</vaadin-app-layout>
