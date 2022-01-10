@@ -21,9 +21,6 @@ import de.codecamp.vaadin.flowdui.TemplateComposite;
 
 
 @Route("component-test")
-@Theme(value = Lumo.class, variant = Lumo.DARK)
-@JsModule("@vaadin/vaadin-lumo-styles/badge.js")
-@CssImport(value = "./styles/shared-styles.css", include = "lumo-badge")
 public class ComponentTestView
   extends TemplateComposite
 {
@@ -35,7 +32,7 @@ public class ComponentTestView
   private Dialog dialog;
 
   @Slotted("formLayoutSlot")
-  private FormLayout slotted = new FormLayout();
+  private final FormLayout slotted = new FormLayout();
 
 
   public ComponentTestView()

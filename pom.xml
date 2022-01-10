@@ -25,7 +25,7 @@
     <maven.install.skip>true</maven.install.skip>
     <maven.deploy.skip>true</maven.deploy.skip>
 
-    <vaadin.version>14.4.1</vaadin.version>
+    <vaadin.version>22.0.2</vaadin.version>
     <vaadin-flowdui.version>0.9.4</vaadin-flowdui.version>
   </properties>
 
