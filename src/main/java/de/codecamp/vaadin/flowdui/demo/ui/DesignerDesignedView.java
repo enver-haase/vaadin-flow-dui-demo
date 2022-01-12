@@ -1,24 +1,35 @@
 package de.codecamp.vaadin.flowdui.demo.ui;
 
-import com.vaadin.flow.component.Tag;
-import com.vaadin.flow.component.dependency.JsModule;
-import com.vaadin.flow.component.littemplate.LitTemplate;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.router.Route;
+import de.codecamp.vaadin.flowdui.Mapped;
+import de.codecamp.vaadin.flowdui.TemplateComposite;
+import de.codecamp.vaadin.flowdui.TemplateId;
 
-/**
- * A Designer generated component for the designer-designed-view template.
- *
- * Designer will add and remove fields with @Id mappings but
- * does not overwrite or otherwise change this file.
- */
-@Tag("designer-designed-view")
-@JsModule("./designer-designed-view.ts")
-public class DesignerDesignedView extends LitTemplate {
+@Route("pariss")
+@TemplateId("de.codecamp.vaadin.flowdui.demo.ui.designer-designed-view")
+public class DesignerDesignedView extends TemplateComposite {
 
-    /**
-     * Creates a new DesignerDesignedView.
-     */
-    public DesignerDesignedView() {
-        // You can initialise any data required for the connected UI components here.
+    @Mapped("com.daimlertruck.buttonid")
+    private Button daimlerButton;
+
+
+    public DesignerDesignedView(){
+        initContent();
+
+        System.err.println("XXXX Text is "+daimlerButton.getText());
     }
 
+    @Override
+    protected Component initContent() {
+        Component c = super.initContent();
+
+        if (daimlerButton.getText().contains("com.daimlertruck.fooview.foobutton")){ // WARNING: do not use 'equals'
+            System.err.println("Setting new text...");
+            daimlerButton.setText("Translated Foo");
+        }
+
+        return c;
+    }
 }

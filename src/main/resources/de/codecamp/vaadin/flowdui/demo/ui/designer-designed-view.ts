@@ -20,8 +20,8 @@ export class DesignerDesignedView extends LitElement {
  <vaadin-button>
    Button 
  </vaadin-button>
- <vaadin-button theme="tertiary">
-   Tertiary 
+ <vaadin-button theme="tertiary" id="com.daimlertruck.buttonid" disabled>
+  com.daimlertruck.fooview.foobutton
  </vaadin-button>
  <vaadin-checkbox type="checkbox" value="on">
    I agree 
